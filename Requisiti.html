@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<body>
+<h1 style="text-align: center;">JavaBook<br>
+</h1>
+Sviluppare un'applicazione di social networking liberamente ispirata a Facebook. 
+<br>
+Tutte le classi devono essere nel package "jbook".<br>
+
+<hr style="width: 100%; height: 2px;">
+
+<h2>R1 - Registrazione</h2>
+Il sistema viene gestito tramite un'istanza della classe <b>Book</b>.
+ <br>
+I nuovi utenti vengono registrati tramite il metodo <b>nuovoAccount()</b> che riceve
+come parametri il nome utente e la password.
+Si assuma che i nomi utente siano unici.
+<br>
+Un utente registrato viene autenticato tramite il metodo <b>accedi()</b> che riceve come parametri
+nome utente e password, il metodo restituisce un oggetto di classe <b>Account</b> corrispondente al nome utente, se la 
+password fornita è corretta. Se la il nome utente &egrave; inesistente o la password &egrave; errata
+viene generata un'eccezione di <b>AccessoFallitoException</b>.
+<br>
+La classe <b>Account</b> che offre i metodi getter per accedere al nome utente ed al nome reale ed il metodo
+setter per definire il nome reale.
+
+
+ 
+<h2>R2 - Utenti</h2>
+&Egrave; possibile ricercare delle persone tra gli utenti del sistema tramite il metodo <b>cercaUtenti()</b>
+che riceve come parametro una stringa e resistuisce un elenco di utenti il cui nome reale contiene la stringa data.
+(<code>String.indexOf()</code>). Gli oggetti dell'elenco sono di classe <b>Utente</b>, tale classe offre il metodo
+getter per conoscere il nome reale dell'utente corrispondente.
+<br>
+La classe Utente rappresenta la parte pubblica visibile, mentre la classe Account rappresenta la parte privata
+accessibile soltanto al proprietario dell'account (tramite la password)
+<br>
+Data un oggetto Account &egrave; possibile ottenere l'oggetto Utente corrispondente tramite il metodo <b>mioUtente()</b>.
+<br>
+&Egrave; possibili richiedere amicizia ad un utente tramite il metodo <b>richiestaAmicizia()</b> che riceve come
+parametro l'oggetto Utente del richiedente.
+<br>
+Per conoscere quali sono le richieste di amicizia pendenti si usa il metodo <b>richieste()</b> della classe Account.
+Le richieste possono essere accettate tramite il metodo <b>accetto()</b> della classe Account che riceve come
+parametro l'Utente la cui richiesta si intende accettare. 
+<br>
+Se il metodo accetto() riceve come parametro un utente che non &egrave; nella lista delle richieste viene
+generata un'eccezione <b>RichiestaInesistenteException</b>.
+<br>
+&Egrave; possibile conoscere gli amici tramite il metodo <b>amici()</b> della classe Utente.
+
+
+<h2>R3 - Messaggi</h2>
+Ciascun utente pu&ograve; mettere dei messaggi sulla propria bacheca tramite il metodo <b>post()</b> che riceve
+come parametro una stringa contenente il testo del messaggio e restituisce un oggetto di classe <b>Messaggio</b>
+<br>
+La classe Messaggio offre i metodi getter per conoscere l'autore, il testo e l'ora di pubblicazione.
+L'ora viene registrata automaticamente prendendo il valore restituito da <code>System.currentTimeMillis()</code>,
+il quale restituisce il numero di millisecondi trascorsi dal 1 Gennaio 1970.
+<br>
+La classe Metodo fornisce il metodo <b>quantoTempoFa()</b> che riceve in ingresso il tempo in millisecondi e 
+permette di quantificare il tempo secondo questo schema:
+<ul>
+<li>se inferiore al minuto restituisce "x secondi fa"
+<li>se inferiore all'ora restituisce "x minuti fa"
+<li>altrimenti restituisce "x ore fa"
+</ul>
+
+<h2>R4 - Bacheca</h2>
+Per ogni utente &egrave; possibile conoscere i contenuti della bacheca di un utente tramite il metodo
+<b>bacheca()</b> della classe Utente, che restituisce una lista ordinata dei messaggi postati a partire
+dal pi&ugrave; recente.
+<br>
+Inoltre il metodo <b>aggiornamenti()</b> della classe Account restituisce una lista di tutti i messaggi postati
+sulle bacheche di tutti gli amici e sulla propria ordinati a partire dal pi&ugrave; recente.
+
+<h2>R5 - Statistiche </h2>
+&Egrave; possibile raccogliere delle statistiche tramite dei metodi presenti nella classe Book.
+<br>
+Per ogni utente &egrave; possibile sapere, tramite il metodo <b>livelloSociale()</b> della classe la media del numero di amici condivisi con gli amici.
+Ovvero dato un utente, per ogni amico si osserva il numero di amici in comune e si calcola la media.
+<br>
+Dato un utente &egrave; possibilie conoscere, tramite il metodo <b>livelloAttivita()</b> calcolato come il numero 
+di messaggi pubblicati nell'ultima ora. 
+
+<hr style="width: 100%; height: 2px;"><br>
+</body>
+</html>
